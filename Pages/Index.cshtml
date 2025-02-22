@@ -1,0 +1,60 @@
+﻿@page
+@model Assignment_2.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>The Happy Birthday App</h1>
+
+<!-- Link to Privacy Page -->
+<div class="border border-primary p-3 bg-light mb-3">
+    <a asp-page="Privacy" asp-route-name="Billy" asp-route-age="6" class="btn btn-primary">Happy Birthday Billy!</a>
+</div>
+
+<!--GET Form-->
+<div class="border border-primary p-3 bg-light mb-3">
+    <h3>GET</h3>
+    <form method="get" asp-page="Privacy">
+        <div class="form-group">
+            <label>Name:</label>
+            <input type="text" name="name" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Age:</label>
+            <input type="number" name="age" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-success mt-2">Submit</button>
+    </form>
+</div>
+
+<!--CROSS POST Form-->
+<div class="border border-primary p-3 bg-light mb-3">
+    <h3>CROSS POST</h3>
+    <form method="post" asp-page="Privacy">
+        <div class="form-group">
+            <label>Name:</label>
+            <input asp-for="Person.Name" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Age:</label>
+            <input asp-for="Person.Age" type="number" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-success mt-2">Submit</button>
+    </form>
+</div>
+
+<!--POSTBACK Form-->
+<div class="border border-primary p-3 bg-light mb-3">
+    <h3>POSTBACK</h3>
+    <form method="post">
+        <div class="form-group">
+            <label>Name:</label>
+            <input asp-for="Person.Name" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Age:</label>
+            <input asp-for="Person.Age" type="number" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-success mt-2">Submit</button>
+    </form>
+</div>
