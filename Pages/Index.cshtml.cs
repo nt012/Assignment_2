@@ -27,7 +27,12 @@ namespace Assignment_2.Pages
             _logger.LogInformation($"Name={Person.Name}");
             _logger.LogInformation($"Age={Person.Age}");
 
-            return RedirectToPage("Privacy", new { name = Person.Name, age = Person.Age });
+            // data stored in TempData to be redirected
+            TempData["Name"] = Person.Name;
+            TempData["Age"] = Person.Age;
+
+            // Redirect to Privacy page
+            return RedirectToPage("Privacy");
         }
     }
 }

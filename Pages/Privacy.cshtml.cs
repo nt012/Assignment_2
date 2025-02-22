@@ -16,29 +16,21 @@ namespace Assignment_2.Pages
         [BindProperty]
         public PersonModel? Person { get; set; }
 
-        public void OnGet(string? name, int? age)
+        public void OnGet()
         {
             _logger.LogInformation("Privacy OnGet");
 
-            if (!string.IsNullOrEmpty(name) && age.HasValue)
+            // Retrieve TempData values
+            if (TempData.ContainsKey("Name") && TempData.ContainsKey("Age"))
             {
-                Person = new PersonModel { Name = name, Age = age.Value };
-                _logger.LogInformation($"Name={Person.Name}");
-                _logger.LogInformation($"Age={Person.Age}");
-            }
-        }
-
-        public void OnPost(PersonModel person)
-        {
-            _logger.LogInformation("Privacy OnPost");
-
-            if (person != null)
-            {
-                Person = person;
+                Person = new PersonModel
+                {
+                    Name = TempData["Name"] as string ?? "",
+                    Age = (int)TempData["Age"]
+                };
                 _logger.LogInformation($"Name={Person.Name}");
                 _logger.LogInformation($"Age={Person.Age}");
             }
         }
     }
-
 }
